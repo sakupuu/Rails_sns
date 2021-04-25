@@ -3,5 +3,6 @@
 
 <% @tweets.each do |tweet| %>
   <hr>
+  <p><span>email: </span><%=link_to tweet.user.email, user_path(tweet.user.id) %></p>
   <p><span>ツイート内容: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
 <% end %>
