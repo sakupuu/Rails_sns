@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'tweets#index'
   devise_for :users
 
@@ -8,6 +9,12 @@ Rails.application.routes.draw do
 
   resources :tweets do
     resources :comments, only: [:create]
+  end
+
+  resources :users do
+    resource :relationships, only: [:create, :destroy]
+    get :follows, on: :member 
+    get :followers, on: :member 
   end
 
   resources :users
