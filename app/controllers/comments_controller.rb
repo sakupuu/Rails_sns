@@ -14,7 +14,20 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      redirect_to tweet_path(@tweet), notice: 'コメントを削除しました'
+    else
+      flash.now[:alert] = 'コメント削除に失敗しました'
+      render tweet_path(@tweet)
+    end
+  end
+
   private
+  def set_tweet
+    @tweet = Tweet.find(params[:tweet_id])
+  end
 
     def comment_params
       params.require(:comment).permit(:content)

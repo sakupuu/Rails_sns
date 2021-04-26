@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :tweets do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
 
   resources :users do
@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   end
 
   resources :users
+
+  resources :tweets, only: [:create, :new, :edit, :update, :destroy]
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

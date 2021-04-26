@@ -16,9 +16,14 @@
 <% @tweets.each do |tweet| %>
   <hr>
   <p><span>ツイート内容: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
+  <% if current_user == @user %>
+  <%= link_to "edit", edit_tweet_path(tweet[:id]) %>
+  <%= link_to "delete", tweet, method: :delete, data: { confirm: "You sure?" } %>
+  <% end %>
 <% end %>
 
 <% @favorite_tweets.each do |tweet| %>
   <hr>
   <p><span>ファボツイート内容: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
 <% end %>
+
