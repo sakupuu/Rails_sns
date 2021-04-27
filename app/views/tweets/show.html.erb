@@ -5,12 +5,10 @@
 <p><span>ツイート内容: </span><%= @tweet.body %></p>
 
 <h2>コメント一覧</h2>
-<% @comments.each do |c| %>
-  <div>
-    <a href="/users/<%= @tweet.user.id %>"><%= @user.email %></a>
-    <%= c.content %>
-    <hr>
-  </div>
+<% @comments.each do |comment| %>
+  <p><span>コメント内容: </span><%= comment.content %></p>
+  <%=link_to "edit", tweet_comment_path(@tweet.user.id), method: :edit %>
+  <%=link_to "delete", tweet_comment_path(@tweet.user.id), method: :delete, data: { confirm: "You sure?" } %>
 <% end %>
 
 <%= form_for [@tweet, @comment] do |f| %>
