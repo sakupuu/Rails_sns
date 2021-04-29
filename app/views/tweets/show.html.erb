@@ -1,14 +1,15 @@
 <h1>ツイート詳細</h1>
 
-
 <p><span>email: </span><%= @user.email %></p>
 <p><span>ツイート内容: </span><%= @tweet.body %></p>
 
 <h2>コメント一覧</h2>
-<% @comments.each do |comment| %>
+<% @tweet.comments.each do |comment| %>
   <p><span>コメント内容: </span><%= comment.content %></p>
-  <%=link_to "edit", tweet_comment_path(@tweet.user.id), method: :edit %>
-  <%=link_to "delete", tweet_comment_path(@tweet.user.id), method: :delete, data: { confirm: "You sure?" } %>
+  <p><span>テスト: </span><%= comment.id %></p>
+  <p><span>テスト: </span><%= @tweet.id %></p>
+  <%= link_to '編集' , edit_tweet_comment_path(@tweet, comment.id)%>
+  <%= link_to '削除', [comment.tweet, comment], method: :delete, data: { confirm: "You sure?" } %>
 <% end %>
 
 <%= form_for [@tweet, @comment] do |f| %>
