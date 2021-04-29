@@ -1,10 +1,9 @@
-<h1>Tweets#new</h1>
-<p>Find me in app/views/tweets/new.html.erb</p>
+<h1>新規投稿</h1>
 
 <%= form_for @tweet do |f| %>
   <p>
     <%= f.label :body,"ツイート" %>
     <%= f.text_field :body %>
   </p>
-  <%= f.submit %>
+  <%= f.submit '投稿する' %>
 <% end %>
