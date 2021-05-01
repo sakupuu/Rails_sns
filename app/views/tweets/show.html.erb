@@ -13,7 +13,7 @@
   </div>
 <% end %>
 
-<%= form_for [@tweet, @comment] do |f| %>
+<%= form_with(model:[@tweet, @comment]) do |f| %>
   <%= f.text_field :content %>
   <br>
   <%= f.submit 'コメントする' %>
