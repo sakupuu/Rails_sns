@@ -16,6 +16,7 @@
   <%= f.text_field :content %>
   <br>
   <%= f.submit 'コメントする' %>
+  <%= flash[:success] %>
 <% end %>
 
 <%= link_to "ホームへ戻る", tweets_path %>
