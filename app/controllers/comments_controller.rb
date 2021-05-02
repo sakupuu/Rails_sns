@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
   end
 
-    def comment_params
-      params.require(:comment).permit(:content)
-    end
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
 end
