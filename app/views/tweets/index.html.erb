@@ -4,7 +4,7 @@
   <hr>
   <p><span>email: </span><%=link_to tweet.user.email, user_path(tweet.user.id) %></p>
   <p><span>ツイート内容: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
-  <p><span>Image:</span><%= link_to tweet.img, tweet_path(tweet.id) %></p>
+  
   
   <% if user_signed_in? %>
     <% if tweet.favorited_by?(current_user) %> 
