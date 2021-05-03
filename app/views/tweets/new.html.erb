@@ -1,5 +1,4 @@
-<h1>Tweets#new</h1>
-<p>Find me in app/views/tweets/new.html.erb</p>
+<h1>新規投稿</h1>
 
 <%= form_with model: @tweet do |f| %>
   <p>
@@ -8,3 +7,5 @@
   </p>
   <%= f.submit %>
 <% end %>
+
+<%= link_to "ホームへ戻る", tweets_path %>
