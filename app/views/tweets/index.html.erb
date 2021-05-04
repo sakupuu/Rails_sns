@@ -10,6 +10,15 @@
     <% else %>
         <p><span>お気に入り登録: </span><%=link_to tweet.favorites.count, tweet_favorites_path(tweet.id), method: :post %></p>
     <% end %>
+
+    <% if current_user != tweet.user %>
+        <% if tweet.user.followed_by?(current_user) %>
+            <p><%=link_to "フォロー済み", user_relationships_path(tweet.user.id), method: :delete %></p>
+        <% else %>
+            <p><%=link_to "フォローする", user_relationships_path(tweet.user.id), method: :post %></p>
+        <% end %>
+    <% end %>
+    
   <% else %>
     <p><span>お気に入り数: </span><%= tweet.favorites.count %></p>
   <% end %>

@@ -1,7 +1,17 @@
 <h1>マイページです</h1>
 
 <hr>
-<p><span>email: </span><%= @user.email %></p>
+<p><span>email: </span><%= @user.email %></p><p>
+
+<%=link_to "フォロー", follows_user_path(@user.id) %></p>
+<p><%=link_to "フォロワー", followers_user_path(@user.id) %></p>
+<% if current_user != @user %>
+    <% if @user.followed_by?(current_user) %>
+        <p><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></p>
+    <% else %>
+        <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+    <% end %>
+<% end %>
 
 <% @tweets.each do |tweet| %>
   <hr>
