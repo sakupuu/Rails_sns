@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'tweets#index'
   devise_for :users
 
+  get "admin_tweet" => "tweets#admin_tweet"
   resources :tweets do
     resource :favorites, only: [:create, :destroy]
   end
