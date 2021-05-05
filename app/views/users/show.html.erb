@@ -7,9 +7,10 @@
   <h1>My Page</h1>
 
   <hr>
-  <p><span>email: </span><%= @user.email %></p><p>
-
-  <%=link_to "Following", follows_user_path(@user.id) %></p>
+  <p><span>email: </span><%= @user.email %></p>
+  <p><span>name: </span><%= @user.name %></p>
+  
+  <p><%=link_to "Following", follows_user_path(@user.id) %></p>
   <p><%=link_to "Followers", followers_user_path(@user.id) %></p>
   <% if current_user != @user %>
       <% if @user.followed_by?(current_user) %>
