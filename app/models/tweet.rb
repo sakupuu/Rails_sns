@@ -11,7 +11,7 @@ class Tweet < ApplicationRecord
   # クラスメソッド
   # 参照形に使うことが多い
   def self.admin_tweets_count
-    return Tweet.where(user_id: 1)
+    return Tweet.where(user_id: 1).count
   end
 
   # インスタンスメソッド
@@ -19,12 +19,17 @@ class Tweet < ApplicationRecord
   def update_to_admin
     # ここのselfはインスタンスのこと
     # selfが使えるのでわざわざ引数いらない！
+
     self.update(
       user_id: 1
     )
+
+    # update(
+    #   user_id: 1
+    # )
     # updateの返り値はtrue/falseなのでselfをreturnしてあげる
-    # update!は成功すればインスタンス、失敗したら例外が返り値になる
+    # update!は成功すればtrue、失敗したら例外が返り値になる
     # 使い分けよう
-    return self
+    # return self
   end
 end
