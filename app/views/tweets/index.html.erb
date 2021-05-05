@@ -30,9 +30,16 @@
         <%= link_to "delete", tweet, method: :delete, data: { confirm: "You sure?" } %>
       <% end %>
 
+<% @tweets.each do |tweet| %>
+  <hr>
+  <p><span>email: </span><%=link_to tweet.user.email, user_path(tweet.user.id) %></p>
+  <p><span>ツイート内容: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
+  <% if user_signed_in? %>
+    <% if tweet.favorited_by?(current_user) %> 
+        <p><span>お気に入り解除: </span><%=link_to tweet.favorites.count, tweet_favorites_path(tweet.id), method: :delete %></p>
     <% else %>
       <p><span>BookMark: </span><%= tweet.favorites.count %></p>
     <% end %>
-
   <% end %>
+<% end %>
 </body>

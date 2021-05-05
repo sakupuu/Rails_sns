@@ -13,9 +13,9 @@
   <p><%=link_to "Followers", followers_user_path(@user.id) %></p>
   <% if current_user != @user %>
       <% if @user.followed_by?(current_user) %>
-          <p><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></p>
+          <p><%=link_to "Followed", user_relationships_path(@user.id), method: :delete %></p>
       <% else %>
-          <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+          <p><%=link_to "Following", user_relationships_path(@user.id), method: :post %></p>
       <% end %>
   <% end %>
 
@@ -33,3 +33,5 @@
     <p><span>FavoriteTweet: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
   <% end %>
 </body>
+
+<%= link_to "Back To Home", tweets_path %>
