@@ -4,21 +4,14 @@
 </head>
 
 <body>
-  <h1>My Page</h1>
+  <h1> My Page </h1>
 
   <hr>
-  <p><span>email: </span><%= @user.email %></p>
-  <p><span>name: </span><%= @user.name %></p>
-  
+    <p><span>email: </span><%= @user.email %></p>
+    <p><span>name: </span><%= @user.name %></p>
+
   <p><%=link_to "Following", follows_user_path(@user.id) %></p>
   <p><%=link_to "Followers", followers_user_path(@user.id) %></p>
-  <% if current_user != @user %>
-      <% if @user.followed_by?(current_user) %>
-          <p><%=link_to "Followed", user_relationships_path(@user.id), method: :delete %></p>
-      <% else %>
-          <p><%=link_to "Following", user_relationships_path(@user.id), method: :post %></p>
-      <% end %>
-  <% end %>
 
   <% @tweets.each do |tweet| %>
     <hr>
@@ -33,6 +26,7 @@
     <hr>
     <p><span>FavoriteTweet: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
   <% end %>
+  <hr>
 </body>
 
 <%= link_to "Back To Home", tweets_path %>
