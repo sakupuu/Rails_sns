@@ -1,12 +1,18 @@
-<h1>コメント編集</h1>
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+</head>
 
-<%= form_for [@tweet, @comment] do |f| %>
-    <div class ="field">
-      <%= f.text_field :content %>
-    </div>
-    <br>
-    <div class ="actions">
-      <%= f.submit '更新する' %>
-    </div>
-<% end %>
-  
+<body>
+  <h1>Edit Comment</h1>
+
+  <%= form_for [@tweet, @comment] do |f| %>
+      <div class ="field">
+        <%= f.text_field :content %>
+      </div>
+      <br>
+      <div class ="actions">
+        <%= f.submit 'Update' %>
+      </div>
+  <% end %>
+</body>
