@@ -1,13 +1,20 @@
-<h1>ユーザー一覧</h1>
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+</head>
 
-<% @users.each do |user| %>
+<body>
+  <h1>All Users</h1>
+
+  <% @users.each do |user| %>
   <hr>
   <p><span>email: </span><%=link_to user.email, user_path(user.id) %></p>
-  <% if current_user != user %>
-        <% if user.followed_by?(current_user) %>
-            <p><%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete %></p>
-        <% else %>
-            <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
-        <% end %>
+    <% if current_user != user %>
+      <% if user.followed_by?(current_user) %>
+        <p><%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete %></p>
+      <% else %>
+        <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
+      <% end %>
     <% end %>
-<% end %>
+  <% end %>
+</body>
