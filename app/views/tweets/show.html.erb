@@ -1,20 +1,26 @@
-<h1>ツイート詳細</h1>
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+</head>
 
-<p><span>email: </span><%= @user.email %></p>
-<p><span>ツイート内容: </span><%= @tweet.body %></p>
+<body>
+  <h1>Tweet Details</h1>
 
-<h2>コメント一覧</h2>
-<% @tweet.comments.each do |comment| %>
-  <p><span>コメント内容: </span><%= comment.content %></p>
-  <%= link_to '編集' , edit_tweet_comment_path(@tweet, comment.id)%>
-  <%= link_to '削除', [comment.tweet, comment], method: :delete, data: { confirm: "You sure?" } %>
-<% end %>
+  <p><span>email: </span><%= @user.email %></p>
+  <p><span>tweet: </span><%= @tweet.body %></p>
 
-<%= form_for [@tweet, @comment] do |f| %>
-  <%= f.text_field :content %>
-  <br>
-  <%= f.submit 'コメントする' %>
-<% end %>
+  <h2>All Comments</h2>
+  <% @tweet.comments.each do |comment| %>
+    <p><span>comment: </span><%= comment.content %></p>
+    <%= link_to 'edit' , edit_tweet_comment_path(@tweet, comment.id)%>
+    <%= link_to 'delete', [comment.tweet, comment], method: :delete, data: { confirm: "You sure?" } %>
+  <% end %>
 
-<%= link_to "ホームへ戻る", tweets_path %>
+  <%= form_for [@tweet, @comment] do |f| %>
+    <%= f.text_field :content %>
+    <br>
+    <%= f.submit 'submit' %>
+  <% end %>
 
+  <%= link_to "Back To Home", tweets_path %>
+</body>
