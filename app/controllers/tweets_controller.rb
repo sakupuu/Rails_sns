@@ -13,6 +13,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
     @user = @tweet.user
     @comments = @tweet.comments
+    @tweetnew = Tweet.new
     @comment = Comment.new
   end
 

@@ -15,12 +15,24 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @tweet = Tweet.find(params[:tweet_id])
+    @comment = @tweet.comments.find(params[:id])
+    @comment.destroy
+    redirect_to tweet_path(@tweet)
+  end
+  
+  def edit 
+    @tweet = Tweet.find(params[:tweet_id])
     @comment = Comment.find(params[:id])
-    if @comment.destroy
-      redirect_to tweet_path(@tweet), notice: 'コメントを削除しました'
+  end
+
+  def update
+    @tweet = Tweet.find(params[:tweet_id])
+    @comment = Comment.find(params[:id])
+    if @comment.update(comment_params)
+      redirect_to tweet_path(@tweet)
     else
-      flash.now[:alert] = 'コメント削除に失敗しました'
-      render tweet_path(@tweet)
+      render :new
     end
   end
 
