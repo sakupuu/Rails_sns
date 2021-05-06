@@ -9,9 +9,9 @@
   <% else %>
   <img src="/assets/default.png" class="icon" alt="ユーザーアイコン" %>
   <% end %>
-  
+
   <% if user_signed_in? %>
-    <% if tweet.favorited_by?(current_user) %> 
+    <% if tweet.favorited_by?(current_user) %>
         <p><span>お気に入り解除: </span><%=link_to tweet.favorites.count, tweet_favorites_path(tweet.id), method: :delete %></p>
     <% else %>
         <p><span>お気に入り登録: </span><%=link_to tweet.favorites.count, tweet_favorites_path(tweet.id), method: :post %></p>
@@ -24,7 +24,7 @@
             <p><%=link_to "フォローする", user_relationships_path(tweet.user.id), method: :post %></p>
         <% end %>
     <% end %>
-    
+
     <% if current_user == tweet.user %>
       <%= link_to "edit", edit_tweet_path(tweet[:id]) %>
       <%= link_to "delete", tweet, method: :delete, data: { confirm: "You sure?" } %>
