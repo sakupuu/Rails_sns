@@ -1,5 +1,5 @@
-<h1>こんにちは</h1>
-<p>ユーザー用ページです</p>
+<h1>マイページです</h1>
+
 <hr>
 <p><span>email: </span><%= @user.email %></p><p>
 
@@ -27,3 +27,4 @@
   <p><span>ファボツイート内容: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
 <% end %>
 
+<%= link_to "ホームへ戻る", tweets_path %>

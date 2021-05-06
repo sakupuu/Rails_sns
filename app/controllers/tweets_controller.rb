@@ -13,7 +13,6 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
     @user = @tweet.user
     @comments = @tweet.comments
-    @comment = @tweet.comments.build
     @comment = Comment.new
   end
 
@@ -44,7 +43,8 @@ class TweetsController < ApplicationController
   end
 
   private
-    def tweet_params
-      params.require(:tweet).permit(:body) 
-    end
+
+  def tweet_params
+    params.require(:tweet).permit(:body) 
+  end
 end
