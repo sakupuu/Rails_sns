@@ -15,13 +15,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @tweet = Tweet.find(params[:tweet_id])
-    @comment = @tweet.comments.find(params[:id])
+    tweet = Tweet.find(params[:tweet_id])
+    @comment = tweet.comments.find(params[:id])
     @comment.destroy
-    redirect_to tweet_path(@tweet)
+    redirect_to tweet_path(tweet)
   end
-  
-  def edit 
+
+  def edit
     @tweet = Tweet.find(params[:tweet_id])
     @comment = Comment.find(params[:id])
   end
@@ -37,11 +37,8 @@ class CommentsController < ApplicationController
   end
 
   private
-  def set_tweet
-    @tweet = Tweet.find(params[:tweet_id])
-  end
 
-    def comment_params
-      params.require(:comment).permit(:content)
-    end
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
 end
