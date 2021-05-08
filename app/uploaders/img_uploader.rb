@@ -3,6 +3,9 @@ class ImgUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
+  include CarrierWave::MiniMagick
+  process resize_to_fit: [600, 400]
+
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -27,7 +30,7 @@ class ImgUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
-  # def scale(width, height)
+  # def scale(50, 50)
   #   # do something
   # end
 
