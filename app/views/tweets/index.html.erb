@@ -1,5 +1,18 @@
 <h1>ツイート一覧です</h1>
 
+<%= form_tag( '/tweets' , local: true, method: :get) do  %>
+  <%= text_field_tag :search_body, {}, placeholder: "ツイート内容を検索" %>
+  <%= hidden_field_tag :search, "true" %>
+  <%= submit_tag "検索" %>
+<% end %>
+
+<% if params[:search] %>
+  <p><%= params[:search_body] %>の検索結果</p>
+  <p><%= @tweets.count %>件見つかりました。</p>
+<% end %>
+
+<%= link_to "検索結果をリセット", tweets_path %>
+
 <% @tweets.each do |tweet| %>
   <hr>
   <p><span>email: </span><%=link_to tweet.user.email, user_path(tweet.user.id) %></p>

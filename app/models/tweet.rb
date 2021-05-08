@@ -7,4 +7,8 @@ class Tweet < ApplicationRecord
   end
 
   has_many :comments
+
+  scope :like_body, -> (body)  {
+    where("body LIKE ?", "%#{body}%")
+  }
 end
