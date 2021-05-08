@@ -24,7 +24,6 @@ class ImgUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   end
 
-  
   process :convert => 'jpg'
 
   # Process files as they are uploaded:
@@ -46,7 +45,7 @@ class ImgUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    super.chomp(File.extname(super)) + '.jpg' 
+    super.chomp(File.extname(super)) + '.jpg'
   end
 
   def filename
