@@ -1,0 +1,12 @@
+<h1>Comments#edit</h1>
+
+<%= form_for [@tweet, @comment] do |f| %>
+    <div class ="field">
+      <%= f.text_field :content %>
+    </div>
+    <br>
+    <div class ="actions">
+      <%= f.submit 'コメントする' %>
+    </div>
+<% end %>
+  

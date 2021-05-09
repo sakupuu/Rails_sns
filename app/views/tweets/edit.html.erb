@@ -1,0 +1,13 @@
+<h1>Tweets#edit</h1>
+
+<%= form_with model: @tweet do |f| %>
+    <div class ="field">
+        <%= f.text_field :body %>
+    </div>
+    <div class ="actions">
+        <%= f.submit %>
+    </div>
+<% end %>
+
+
+
