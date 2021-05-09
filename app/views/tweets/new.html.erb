@@ -1,6 +1,6 @@
 <h1>新規投稿</h1>
 
-<%= form_for @tweet do |f| %>
+<%= form_with model: @tweet do |f| %>
   <p>
     <%= f.label :body,"ツイート" %>
     <%= f.text_field :body %>
