@@ -6,8 +6,6 @@
 <h2>コメント一覧</h2>
 <% @tweet.comments.each do |comment| %>
   <p><span>コメント内容: </span><%= comment.content %></p>
-  <p><span>テスト: </span><%= comment.id %></p>
-  <p><span>テスト: </span><%= @tweet.id %></p>
   <%= link_to '編集' , edit_tweet_comment_path(@tweet, comment.id)%>
   <%= link_to '削除', [comment.tweet, comment], method: :delete, data: { confirm: "You sure?" } %>
 <% end %>
