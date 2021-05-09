@@ -6,19 +6,19 @@ class CommentsController < ApplicationController
     @comment = tweet.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      flash[:success] = "コメントしました"
       redirect_back(fallback_location: root_path)
+      flash[:success] = "コメントしました"
     else
-      flash[:success] = "コメントできませんでした"
+      flash[:alert] = "コメントできませんでした"
       redirect_back(fallback_location: root_path)
     end
   end
 
   def destroy
-    @tweet = Tweet.find(params[:tweet_id])
-    @comment = @tweet.comments.find(params[:id])
-    @comment.destroy
-    redirect_to tweet_path(@tweet)
+    tweet = Tweet.find(params[:tweet_id])
+    comment = tweet.comments.find(params[:id])
+    comment.destroy
+    redirect_to tweet_path(tweet)
   end
 
   def edit
@@ -37,9 +37,6 @@ class CommentsController < ApplicationController
   end
 
   private
-  def set_tweet
-    @tweet = Tweet.find(params[:tweet_id])
-  end
 
   def comment_params
     params.require(:comment).permit(:content)

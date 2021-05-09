@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   resources :users
 
   resources :tweets, only: [:create, :new, :edit, :update, :destroy]
+
 end
