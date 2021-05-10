@@ -2,6 +2,7 @@
 
 <p><span>email: </span><%= @user.email %></p>
 <p><span>ツイート内容: </span><%= @tweet.body %></p>
+<p><span>Image:</span><%= image_tag @tweet.img.url if @tweet.img?%></p>
 
 <h2>コメント一覧</h2>
 <% @tweet.comments.each do |comment| %>

@@ -7,4 +7,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up,keys:[:email])
   end
 
+  def sign_in_required
+    redirect_to new_user_session_url unless user_signed_in?
+  end
 end

@@ -1,9 +1,9 @@
 <h1>新規投稿</h1>
 
 <%= form_with model: @tweet do |f| %>
-  <p>
     <%= f.label :body,"ツイート" %>
     <%= f.text_field :body %>
-  </p>
-  <%= f.submit '投稿する' %>
+    <%= f.label :img %><br />
+    <%= f.file_field :img %>
+    <%= f.submit '投稿する' %>
 <% end %>
