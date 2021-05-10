@@ -1,30 +1,40 @@
-<h1>マイページ</h1>
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+</head>
 
-<hr>
-<p><span>email: </span><%= @user.email %></p><p>
+<body>
+  <u><h1> My Page </h1></u>
 
-<%=link_to "フォロー", follows_user_path(@user.id) %></p>
-<p><%=link_to "フォロワー", followers_user_path(@user.id) %></p>
-<% if current_user != @user %>
-    <% if @user.followed_by?(current_user) %>
-        <p><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></p>
+  <hr>
+    <p><span>email: </span><%= @user.email %></p>
+    <p><span>name: </span><%= @user.name %></p>
+
+  <p><%=link_to "Following", follows_user_path(@user.id) %></p>
+  <p><%=link_to "Followers", followers_user_path(@user.id) %></p>
+
+  <hr>
+  <u><h2> My Tweet </h1></u>
+  <% @tweets.each do |tweet| %>
+    <p><span>Tweet: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
+    <% if tweet.img? %>
+      <%= image_tag tweet.img.url %>
     <% else %>
-        <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+      <img src="/assets/default.png" class="icon" alt="ユーザーアイコン" %>
     <% end %>
-<% end %>
-
-<% @tweets.each do |tweet| %>
-  <hr>
-  <p><span>ツイート内容: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
-  <% if current_user == @user %>
-  <%= link_to "編集", edit_tweet_path(tweet[:id]) %>
-  <%= link_to "削除", tweet, method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
+    <br>
+    <% if current_user == @user %>
+    <%= link_to "Edit", edit_tweet_path(tweet[:id]) %>
+    <%= link_to "Delete", tweet, method: :delete, data: { confirm: "You sure?" } %>
+    <% end %>
+    <hr>
   <% end %>
-<% end %>
 
-<% @favorite_tweets.each do |tweet| %>
+  <u><h2>Favorite Tweet </h2></u>
+  <% @favorite_tweets.each do |tweet| %>
+    <p><span>FavoriteTweet: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
+  <% end %>
   <hr>
-  <p><span>ファボツイート内容: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
-<% end %>
+</body>
 
-<%= link_to "ホームへ戻る", tweets_path %>
+<%= link_to "Back To Home", tweets_path %>

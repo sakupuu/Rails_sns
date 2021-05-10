@@ -1,9 +1,18 @@
-<h1>新規投稿</h1>
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+</head>
 
-<%= form_with model: @tweet do |f| %>
+<body>
+<u><h1>New Post</h1></u>
+
+  <%= form_with model: @tweet do |f| %>
     <%= f.label :body,"ツイート" %>
     <%= f.text_field :body %>
     <%= f.label :img %><br />
     <%= f.file_field :img %>
     <%= f.submit '投稿する' %>
-<% end %>
+  <% end %>
+
+<%= link_to "ホームへ戻る", tweets_path %>
+</body>
