@@ -4,7 +4,7 @@
 </head>
 
 <body>
-  <h1> My Page </h1>
+  <u><h1> My Page </h1></u>
 
   <hr>
     <p><span>email: </span><%= @user.email %></p>
@@ -14,7 +14,7 @@
   <p><%=link_to "Followers", followers_user_path(@user.id) %></p>
 
   <hr>
-  <h2> My Tweet </h1>
+  <u><h2> My Tweet </h1></u>
   <% @tweets.each do |tweet| %>
     <p><span>Tweet: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
     <% if tweet.img? %>
@@ -30,7 +30,7 @@
     <hr>
   <% end %>
 
-  <h2>Favorite Tweet </h2>
+  <u><h2>Favorite Tweet </h2></u>
   <% @favorite_tweets.each do |tweet| %>
     <p><span>FavoriteTweet: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
   <% end %>
