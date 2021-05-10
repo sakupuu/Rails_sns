@@ -8,6 +8,7 @@
   <p><span>name: </span><%= @user.name %></p>
   <p><span>email: </span><%= @user.email %></p>
   <p><span>tweet: </span><%= @tweet.body %></p>
+  <p><span>Image:</span><%= image_tag @tweet.img.url if @tweet.img?%></p>
 
   <h2>All Comments</h2>
   <% @tweet.comments.each do |comment| %>

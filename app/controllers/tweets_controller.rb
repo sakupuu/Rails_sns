@@ -32,8 +32,6 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
     if @tweet.update(tweet_params)
       redirect_to tweets_path
-    else
-      render :new
     end
   end
 
@@ -44,6 +42,7 @@ class TweetsController < ApplicationController
   end
 
   private
+
   def tweet_params
     params.require(:tweet).permit(:body)
   end
