@@ -20,8 +20,8 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to tweet_path(@tweet)
   end
-  
-  def edit 
+
+  def edit
     @tweet = Tweet.find(params[:tweet_id])
     @comment = Comment.find(params[:id])
   end
