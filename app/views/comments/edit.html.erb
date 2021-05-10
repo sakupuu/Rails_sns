@@ -6,7 +6,7 @@
 <body>
   <h1>Edit Comment</h1>
 
-  <%= form_for [@tweet, @comment] do |f| %>
+  <%= form_with (model:[@tweet, @comment]) do |f| %>
       <div class ="field">
         <%= f.text_field :content %>
       </div>
