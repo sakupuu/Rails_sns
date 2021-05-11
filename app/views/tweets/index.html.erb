@@ -25,6 +25,7 @@
     <p><span>email: </span><%=link_to tweet.user.email, user_path(tweet.user.id) %></p>
     <p><span>Tweet: </span><%=link_to tweet.body, tweet_path(tweet.id) %></p>
     <% if tweet.img? %>
+    <%# 画像を投稿したのに表示されなかったので、確認お願いします。 %>
       <%= image_tag tweet.img.url %>
     <% else %>
       <img src="/assets/default.png" class="icon" alt="ユーザーアイコン" %>
