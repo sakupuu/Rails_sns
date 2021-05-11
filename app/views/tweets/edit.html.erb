@@ -1,0 +1,17 @@
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <u><h1>Edit</h1></u>
+
+    <%= form_with model: @tweet do |f| %>
+        <div class ="field">
+            <%= f.text_field :body %>
+        </div>
+        <div class ="actions">
+            <%= f.submit %>
+        </div>
+    <% end %>
+</body>
