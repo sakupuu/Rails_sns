@@ -8,6 +8,10 @@ class Tweet < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  scope :like_body, -> (body)  {
+    where("body LIKE ?", "%#{body}%")
+  }
+
   mount_uploader :img, ImgUploader
 
 end

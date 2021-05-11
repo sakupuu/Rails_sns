@@ -6,7 +6,11 @@ class TweetsController < ApplicationController
   end
 
   def index
-    @tweets = Tweet.all
+    if params[:search]
+      @tweets = Tweet.like_body(params[:search_body])
+    else
+      @tweets = Tweet.all
+    end
   end
 
   def show
