@@ -11,7 +11,6 @@ class Tweet < ApplicationRecord
   scope :like_body, -> (body)  {
     where("body LIKE ?", "%#{body}%")
   }
-end
 
   mount_uploader :img, ImgUploader
 
