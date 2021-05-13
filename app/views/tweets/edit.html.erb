@@ -14,4 +14,10 @@
             <%= f.submit %>
         </div>
     <% end %>
+
+    <% if @tweet.img? %>
+      <%= image_tag @tweet.img.url %>
+    <% else %>
+      <img src="/assets/default.png" class="icon" alt="ユーザーアイコン" %>
+    <% end %>
 </body>
