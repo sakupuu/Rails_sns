@@ -5,16 +5,20 @@
 
 <body>
   <u><h1>Tweet Details</h1></u>
-  <p><span>name: </span><%= @user.name %></p>
-  <p><span>email: </span><%= @user.email %></p>
-  <p><span>tweet: </span><%= @tweet.body %></p>
-  <p><span>Image:</span><%= image_tag @tweet.img.url if @tweet.img?%></p>
+  <p><span>名前: </span><%= @user.name %></p>
+  <p><span>メール: </span><%= @user.email %></p>
+  <p><span>ツイート: </span><%= @tweet.body %></p>
+  <% if @tweet.img? %>
+      <%= image_tag @tweet.img.url %>
+    <% else %>
+      <img src="/assets/default.png" class="icon" alt="ユーザーアイコン" %>
+    <% end %>
 
   <u><h2>All Comments</h2></u>
   <% @tweet.comments.each do |comment| %>
     <p><span>comment: </span><%= comment.content %></p>
-    <%= link_to 'edit' , edit_tweet_comment_path(@tweet, comment.id)%>
-    <%= link_to 'delete', [comment.tweet, comment], method: :delete, data: { confirm: "You sure?" } %>
+    <%= link_to '修正' , edit_tweet_comment_path(@tweet, comment.id)%>
+    <%= link_to '削除', [comment.tweet, comment], method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
   <% end %>
 
   <%= form_with(model:[@tweet, @comment]) do |f| %>
@@ -24,5 +28,5 @@
     <%= flash[:success] %>
   <% end %>
 
-<%= link_to "Back To Home", tweets_path %>
+<%= link_to "一覧へ", tweets_path %>
 </body>
