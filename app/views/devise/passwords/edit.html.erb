@@ -11,7 +11,7 @@
     <%= f.hidden_field :reset_password_token %>
 
     <div class="field">
-      <%= f.label :パスワード, "新しいパスワード" %><br />
+      <%= f.label :新しいパスワード, "新しいパスワード" %><br />
       <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> 文字以上)</em><br />
       <% end %>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :新しいパスワードの確認, "新しいパスワードを確認" %><br />
+      <%= f.label :新しいパスワードの確認, "新しいパスワードの確認" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
