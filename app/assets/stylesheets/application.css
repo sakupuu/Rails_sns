@@ -18,6 +18,10 @@ h1 {
   list-style: none;
           }
 
+.main-nav li :hover {
+  background: white;
+}
+
 .main-nav li {
   margin-left: 40px;
               }
