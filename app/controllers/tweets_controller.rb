@@ -9,7 +9,7 @@ class TweetsController < ApplicationController
     if params[:search]
       @tweets = Tweet.like_body(params[:search_body])
     else
-      @tweets = Tweet.all
+      @tweets = Tweet.all.order("created_at DESC")
     end
   end
 
@@ -48,6 +48,6 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:body)
+    params.require(:tweet).permit(:body, :img)
   end
 end

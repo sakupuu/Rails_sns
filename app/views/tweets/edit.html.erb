@@ -6,6 +6,12 @@
 <body>
     <u><h1>Edit</h1></u>
 
+    <% if @tweet.img? %>
+      <%= image_tag @tweet.img.url %>
+    <% else %>
+      <img src="/assets/default.png" class="icon" alt="ユーザーアイコン" %>
+    <% end %>
+
     <%= form_with model: @tweet do |f| %>
         <div class ="field">
             <%= f.text_field :body %>

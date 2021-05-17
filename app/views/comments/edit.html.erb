@@ -6,13 +6,13 @@
 <body>
   <u><h1>Edit Comment</h1></u>
 
-  <%= form_with (model:[@tweet, @comment]) do |f| %>
+  <%= form_with model:[@tweet, @comment] do |f| %>
       <div class ="field">
         <%= f.text_field :content %>
       </div>
       <br>
       <div class ="actions">
-        <%= f.submit 'Update' %>
+        <%= f.submit '更新する' %>
       </div>
-  <% end %>
+    <% end %>
 </body>
